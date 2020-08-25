@@ -29,17 +29,17 @@ body {
 }
 
 // Sticky Footer Styles
-html{
+html {
     position: relative;
     min-height: 100%;
 }
 
-body{
+body {
     // Margin bottom by footer height
     margin-bottom: 60px;
 }
 
-.footer{
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -47,17 +47,27 @@ body{
     height: 60px;
     background-color: #000000;
 
-    .container{
+    .container {
         padding-right: 15px;
         padding-left: 15px;
 
-        p{
+        p {
             color: #c1c1c1;
             margin: 19px 0;
 
-            a{
+            a {
                 color: inherit;
             }
         }
+    }
+}
+
+/* User Register Page */
+.register-page {
+    img.captcha {
+        cursor: pointer;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 3px;
     }
 }
