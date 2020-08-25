@@ -9,7 +9,7 @@
 
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
             <div class="card">
-                <img src="https://www.gravatar.com/avatar/f70f106decbb9f791d060f819ce38036?s=400" alt="{{$user->name}}" class="card-img-top">
+                <img src="{{$user->avatar}}" alt="{{$user->name}}" class="card-img-top">
                 <div class="card-body">
                     <h5><strong>个人简介</strong></h5>
                     <p>{{$user->introduction}}</p>
