@@ -40,3 +40,6 @@ Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->na
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 //展开完成
 
+
+// 用户个人页面路由
+Route::resource('users','UsersController',['only'=>['show','update','edit']]);
