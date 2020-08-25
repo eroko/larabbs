@@ -12,7 +12,7 @@
                 <img src="https://www.gravatar.com/avatar/f70f106decbb9f791d060f819ce38036?s=400" alt="{{$user->name}}" class="card-img-top">
                 <div class="card-body">
                     <h5><strong>个人简介</strong></h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi dolorem quae! Consequuntur cupiditate earum exercitationem ipsam maiores natus, nemo nulla obcaecati possimus provident quasi quos totam veritatis vitae voluptatem?</p>
+                    <p>{{$user->introduction}}</p>
                     <hr>
                     <h5><strong>注册于</strong></h5>
                     <p>{{$user->created_at}}</p>
@@ -38,4 +38,4 @@
     </div>
 
 
-@stop
+@endsection
