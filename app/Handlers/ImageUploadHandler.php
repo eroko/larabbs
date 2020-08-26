@@ -3,6 +3,7 @@
 namespace App\Handlers;
 
 use Illuminate\Support\Str;
+use Image;
 
 class ImageUploadHandler
 {
