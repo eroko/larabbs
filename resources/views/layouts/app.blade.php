@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<div id="id" class="{{route_class()}}-page">
+<div id="app" class="{{route_class()}}-page">
     @include('layouts._header')
     <div class="container">
 
