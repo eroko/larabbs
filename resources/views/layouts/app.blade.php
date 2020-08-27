@@ -9,6 +9,7 @@
     <!-- CSRF Token -->
     <title>@yield('title','LaraBBS')</title>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
+    @yield('styles')
 </head>
 
 <body>
@@ -27,6 +28,6 @@
 
 <!-- Scripts -->
 <script src="{{mix('js/app.js')}}"></script>
-
+@yield('scripts')
 </body>
 </html>
