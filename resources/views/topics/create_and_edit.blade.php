@@ -52,7 +52,7 @@
                     <hr>
 
                     @if($topic->id)
-                        <form action="{{ route('topics.update'),$topic->id }}" method="post" accept-charset="UTF-8">
+                        <form action="{{ route('topics.update',$topic->id) }}" method="post" accept-charset="UTF-8">
                             <input type="hidden" name="_method" value="PUT">
                             @else
                                 <form action="{{ route('topics.store') }}" method="post" accept-charset="UTF-8">
@@ -68,7 +68,7 @@
 
                                     <div class="form-group">
                                         <select name="category_id" id="" class="form-control" required>
-                                            <option value="" hidden disabled selected>请选择分类</option>
+                                            <option value="" hidden disabled {{ $topic->id?'':'selected'}} >请选择分类</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
