@@ -44,7 +44,11 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 // 用户个人页面路由
 Route::resource('users','UsersController',['only'=>['show','update','edit']]);
 
-Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+//Topics Routes
+
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('topics/{topic}/{slug?}','TopicsController@show')->name('topics.show');
 
 // Category Route
 Route::resource('categories','CategoriesController',['only'=>['show']]);

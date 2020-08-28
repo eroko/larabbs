@@ -4,7 +4,7 @@
         @foreach($topics as $topic)
             {{-- @if($loop->first) border-top-0 @endif  如果是第一个元素则去掉 border-top-0 class --}}
             <li class="list-group-item pl-2 pr-2 border-right-0 border-left-0 @if($loop->first) border-top-0 @endif">
-                <a href="{{ route('topics.show',$topic->id) }}" class="">
+                <a href="{{ $topic->link() }}" class="">
                     {{ $topic->title }}
                 </a>
                 <span class="meta float-right text-secondary">
