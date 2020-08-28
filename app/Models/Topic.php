@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 
 class Topic extends Model
 {
-    protected $fillable = ['title', 'body', 'user_id', 'category_id', 'excerpt', 'slug'];
+    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
 
     public function category()
     {
@@ -48,5 +48,11 @@ class Topic extends Model
     public function link($params = [])
     {
         return route('topics.show', array_merge([$this->id, $this->slug], $params));
+    }
+
+    //Add Reply Model, Each Topic May Have Multi Replies
+    public function replies()
+    {
+        $this->hasMany(Reply::class);
     }
 }
