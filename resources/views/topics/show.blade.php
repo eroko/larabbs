@@ -48,27 +48,38 @@
                         {!! $topic->body !!}
                     </div>
 
-                    <div class="operate">
-                        <hr>
-                        <a href="{{ route('topics.edit',$topic->id) }}" class="btn btn-outline-secondary btn-sm"
-                           role="button">
-                            <i class="far fa-edit"></i> 编辑
-                        </a>
-                        <form action="{{ route('topics.destroy',$topic->id) }}" method="POST" style="display: inline-block" onsubmit="确定要删除么？">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
+                    @can('update',$topic)
 
-                            <button class="btn btn-outline-secondary btn-sm" type="submit">
-                                <i class="far fa-trash-alt"></i> 删除
-                            </button>
-                        </form>
-                    </div>
+                        <div class="operate">
+                            <hr>
+                            <a href="{{ route('topics.edit',$topic->id) }}" class="btn btn-outline-secondary btn-sm"
+                               role="button">
+                                <i class="far fa-edit"></i> 编辑
+                            </a>
+                            <form action="{{ route('topics.destroy',$topic->id) }}" method="POST"
+                                  style="display: inline-block" onsubmit="确定要删除么？">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button class="btn btn-outline-secondary btn-sm" type="submit">
+                                    <i class="far fa-trash-alt"></i> 删除
+                                </button>
+                            </form>
+                        </div>
+
+                    @endcan
+                </div>
+            </div>
+
+            {{-- User Replies --}}
+            <div class="card topic-reply mt-4">
+                <div class="card-body">
+                    @include('topics._reply_box',['topic' => $topic])
+                    @include('topics._reply_list',['replies' => $topic->replies()->with('user')->get()])
                 </div>
             </div>
         </div>
 
     </div>
-
-
 
 @stop

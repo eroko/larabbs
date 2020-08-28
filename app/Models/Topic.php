@@ -53,6 +53,6 @@ class Topic extends Model
     //Add Reply Model, Each Topic May Have Multi Replies
     public function replies()
     {
-        $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class);
     }
 }
