@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //首页路由
-Route::get('/','PagesController@root')->name('root');
+Route::get('/', 'PagesController@root')->name('root');
 
 
 //Auth::routes();
@@ -42,18 +42,21 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 
 
 // 用户个人页面路由
-Route::resource('users','UsersController',['only'=>['show','update','edit']]);
+Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 //Topics Routes
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 
-Route::get('topics/{topic}/{slug?}','TopicsController@show')->name('topics.show');
+Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 
 // Category Route
-Route::resource('categories','CategoriesController',['only'=>['show']]);
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 // Topic Image Upload Route
-Route::post('image_upload','TopicsController@uploadImage')->name('topics.upload_image');
+Route::post('image_upload', 'TopicsController@uploadImage')->name('topics.upload_image');
 
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'update', 'edit', 'destroy']]);
+
+// Notification
+Route::resource('notification','NotificationController',['only' => ['index']]);

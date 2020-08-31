@@ -59,6 +59,14 @@
                         </a>
                     </li>
 
+                {{-- Notification --}}
+
+                    <li class="nav-item notification-badge">
+                        <a class="nav-link mr-3 badge badge-pill badge-{{ Auth::user()->notification_count > 0 ? 'success' : 'secondary' }} text-white" href="{{ route('notification.index') }}">
+                            {{ Auth::user()->notification_count }}
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
