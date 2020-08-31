@@ -40,7 +40,7 @@
                     <div class="article-meta text-center text-secondary">
                         {{ $topic->created_at->diffForHumans() }}
                         ·
-                        <i class="far fa-commet"></i>
+                        <i class="far fa-comment"></i>
                         {{ $topic->reply_count }}
                     </div>
 
@@ -74,7 +74,8 @@
             {{-- User Replies --}}
             <div class="card topic-reply mt-4">
                 <div class="card-body">
-                    @include('topics._reply_box',['topic' => $topic])
+                    {{--@include('topics._reply_box',['topic' => $topic])--}}
+                    @includeWhen(Auth::check(),'topics._reply_box',['topic'=>$topic])
                     @include('topics._reply_list',['replies' => $topic->replies()->with('user')->get()])
                 </div>
             </div>
