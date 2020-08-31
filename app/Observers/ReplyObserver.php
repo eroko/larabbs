@@ -22,10 +22,14 @@ class ReplyObserver
 
     public function created(Reply $reply)
     {
-        $reply->topic->reply_count=$reply->topic->replies->count();
-        $reply->topic->save();
+        $reply->topic->updateReplyCount();
 
         // Make a notification to topic author when have a new reply
         $reply->topic->user->notify(new TopicReplied($reply));
+    }
+
+    public function deleted(Reply $reply)
+    {
+        $reply->topic->updateReplyCount();
     }
 }

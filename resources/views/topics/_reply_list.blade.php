@@ -5,7 +5,8 @@
         <li class="media" name="reply{{ $reply->id }}" id="reply{{ $reply->id }}">
             <div class="media-left">
                 <a href="{{ route('users.show',[$reply->user_id]) }}">
-                    <img src="{{ $reply->user->avatar }}" alt="{{ $reply->user->name }}" class="media-object img-thumbnail mr-3" style="width: 48px;height: 48px;">
+                    <img src="{{ $reply->user->avatar }}" alt="{{ $reply->user->name }}"
+                         class="media-object img-thumbnail mr-3" style="width: 48px;height: 48px;">
                 </a>
             </div>
 
@@ -20,11 +21,21 @@
                     </span>
 
                     {{-- The Reply Delete Button --}}
-                    <span class="meta float-right">
-                        <a href="" title="删除回复">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                    </span>
+
+                    @can('destroy',$reply)
+                        <span class="meta float-right">
+                            <form action="{{ route('replies.destroy',$reply->id) }}"
+                                  onsubmit="return confirm('确定要删除此条评论么？')" method="post">
+                               {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button class="btn btn-default btn-xs pull-left text-secondary" type="submit">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </span>
+                    @endcan
+
+
                 </div>
                 <div class="reply-content text-secondary">
                     {!! $reply->content !!}
