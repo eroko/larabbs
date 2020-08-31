@@ -22,10 +22,14 @@ class ReplyObserver
 
     public function created(Reply $reply)
     {
-        $reply->topic->updateReplyCount();
+        // Ignore When Seeding
+        if (!app()->runningInConsole()){
+            $reply->topic->updateReplyCount();
 
-        // Make a notification to topic author when have a new reply
-        $reply->topic->user->notify(new TopicReplied($reply));
+            // Make a notification to topic author when have a new reply
+            $reply->topic->user->notify(new TopicReplied($reply));
+        }
+
     }
 
     public function deleted(Reply $reply)
