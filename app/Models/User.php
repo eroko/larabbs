@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Symfony\Component\Translation\Exception\LogicException;
 
 
 class User extends Authenticatable implements MustVerifyEmailContract
@@ -78,8 +79,29 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function markAsRead()
     {
-        $this->notification_count=0;
+        $this->notification_count = 0;
         $this->save();
         $this->unreadNotifications->markAsRead();
+    }
+
+    // Admin后台修改密码的时候直接加密密码，命名规范为set{属性的驼峰式命名}Attribute。
+    // 下面这个函数在个password赋值的时候会被自动调用
+    public function setPasswordAttribute($value)
+    {
+        if (strlen($value) !== 60) {
+            $value = bcrypt($value);
+        }
+
+        $this->attributes['password'] = $value;
+    }
+
+    // 此部分在avatar被赋值的时候会自动调用
+    public function setAvatarAttribute($path)
+    {
+        if (!\Str::startsWith($path, 'http')) {
+            $path = config('app.url') . "/uploads/images/avatars/$path";
+        }
+
+        $this->attributes['avatar'] = $path;
     }
 }
