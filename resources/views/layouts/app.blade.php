@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- CSRF Token -->
-    <title>@yield('title','LaraBBS')</title>
+    <title>@yield('title','LaraBBS') - {{ setting('site_name','LaraBBS') }}</title>
 
-    <meta name="description" content="@yield('description','LaraBBS')">
-
+    <meta name="description" content="@yield('description',setting('seo_description','LaraBBS'))">
+    <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'LaraBBS'))"/>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
     @yield('styles')
 </head>
