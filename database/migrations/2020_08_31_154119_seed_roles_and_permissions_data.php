@@ -17,7 +17,7 @@ class SeedRolesAndPermissionsData extends Migration
      */
     public function up()
     {
-        app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+        app()['cache']->forget('spatie.permission.cache');
 
         Permission::create(['name'=>'manage_contents']);
         Permission::create(['name'=>'manage_users']);
@@ -39,7 +39,7 @@ class SeedRolesAndPermissionsData extends Migration
      */
     public function down()
     {
-        app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+        app()['cache']->forget('spatie.permission.cache');
 
         $tableNames=config('permission.table_names');
 

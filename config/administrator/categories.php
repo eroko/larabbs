@@ -9,7 +9,7 @@ return [
 
     'action_permissions' => [
         'delete' => function () {
-            return \Illuminate\Support\Facades\Auth::user()->hasRole('Founder');
+            return Auth::user()->hasRole('Founder');
         },
     ],
 

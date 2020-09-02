@@ -60,3 +60,8 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'update', '
 
 // Notification
 Route::resource('notification','NotificationController',['only' => ['index']]);
+
+// Backend Auth Route
+Route::get('permission-denied','PagesController@permissionDenied')->name('permission-denied');
+
+

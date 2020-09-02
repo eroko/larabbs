@@ -7,7 +7,7 @@ return [
     'single' => '权限',
     'model' => Permission::class,
 
-    'permissions' => function () {
+    'permission' => function () {
         return \Illuminate\Support\Facades\Auth::user()->can('manage_users');
     },
 

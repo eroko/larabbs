@@ -3,7 +3,7 @@
 return [
     'title' => '站点管理',
 
-    'permissions' => function () {
+    'permission' => function () {
         return Auth::user()->hasrole('Founder');
     },
 
