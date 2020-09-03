@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use Illuminate\Support\Env;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -22,7 +23,7 @@ class UserObserver
     public function saving(User $user)
     {
         if (empty($user->avatar)){
-            $user->avatar='/default/default-avatar.png';
+            $user->avatar=config('app.url'). '/default/default-avatar.png';
         }
     }
 }
