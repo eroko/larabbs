@@ -59,9 +59,9 @@ Route::post('image_upload', 'TopicsController@uploadImage')->name('topics.upload
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'update', 'edit', 'destroy']]);
 
 // Notification
-Route::resource('notification','NotificationController',['only' => ['index']]);
+Route::resource('notification', 'NotificationController', ['only' => ['index']]);
 
 // Backend Auth Route
-Route::get('permission-denied','PagesController@permissionDenied')->name('permission-denied');
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
 
 
